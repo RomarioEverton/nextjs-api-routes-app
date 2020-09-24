@@ -1,19 +1,29 @@
-import useSWR from 'swr'
-import Person from '../components/Person'
-
-const fetcher = (url) => fetch(url).then((res) => res.json())
+import Head from 'next/head'
+import React from "react"
+import App from '../components/AppButton'
+import AppButton from '../components/App'
+import AppForm from '../components/AppForm'
 
 export default function Index() {
-  const { data, error } = useSWR('/api/people', fetcher)
-
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
-
+   
   return (
-    <ul>
-      {data.map((p, i) => (
-        <Person key={i} person={p} />
-      ))}
-    </ul>
+          <div>
+            
+              <Head>
+                  <title>NextJS-API-Routes-App</title>
+              </Head>
+
+              <h1>
+                <App />
+              </h1>
+
+              <h1>
+                <AppButton />
+              </h1> 
+
+              <h1>
+                <AppForm />
+              </h1>               
+            </div> 
   )
 }
